@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <style>
+            #random{
+            position:relative;
+            top:100px;
+            left:100px;
+            width:50px;
+            height:50px;
+            background-color:red;
+            display:"none";
+        }
+        </style>
+    </head>
+    <body>
+        <h1 style=font-size:50px>Test your Reactions!</h1>
+        <p style=font-size:20px;>Click on the boxes and circles as fast as you can.</p>
+        <p id="time" style=font-size:20px;><b>Your time:<span id="next"></span></b></p>
+        <div id="random">
+        </div>
+        <script type="text/javascript">
+            var start =new Date().getTime();
+            function clickgame(){
+                var t=Math.random()*400;
+                var l=Math.random()*1100;
+                var z=Math.floor(Math.random()*2);
+                var r=Math.floor(Math.random()*256);
+                var g=Math.floor(Math.random()*256);
+                var b=Math.floor(Math.random()*256);
+                if(z==1){
+                    document.getElementById("random").style.borderRadius="50%";
+                }
+                else{
+                    document.getElementById("random").style.borderRadius="0%";
+                }
+                document.getElementById("random").style.backgroundColor="rgb("+r+","+g+","+b+")"
+                document.getElementById("random").style.top=t+"px";
+                document.getElementById("random").style.left=l+"px";
+                document.getElementById("random").style.width=t+"px";
+                document.getElementById("random").style.height=t+"px";
+                document.getElementById("random").style.display="block";
+                start=new Date().getTime()
+            }
+            function call(){
+                setTimeout(clickgame,1000);
+            }
+            document.getElementById("random").onclick=function(){
+                document.getElementById("random").style.display="none";
+                var end=new Date().getTime()
+                document.getElementById("next").innerHTML=(end-start)/1000;
+                call();
+            }
+        </script>
+
+    </body>
+</html>
